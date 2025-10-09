@@ -657,7 +657,7 @@ footer {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px);
     border-radius: 20px;
-    padding: 40px;
+    padding: 60px 40px 40px;
     border: 1px solid rgba(255, 255, 255, 0.8);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     z-index: 100000;
@@ -665,11 +665,11 @@ footer {
 
 .modal-close {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 10px;
+    right: 10px;
     font-size: 2rem;
     font-weight: 300;
-    color: #333;
+    color: white;
     cursor: pointer;
     width: 40px;
     height: 40px;
@@ -677,15 +677,17 @@ footer {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: rgba(242, 127, 166, 0.1);
+    background: rgba(242, 127, 166, 0.9);
     transition: all 0.3s ease;
     line-height: 1;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 10;
 }
 
 .modal-close:hover {
-    background: #f27fa6;
+    background: #e06a92;
     color: white;
-    transform: rotate(90deg);
+    transform: rotate(90deg) scale(1.1);
 }
 
 .modal-content img {

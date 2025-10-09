@@ -473,9 +473,15 @@
 
     function openModal(modalId) {
       const modal = document.getElementById(modalId);
+      const header = document.getElementById('site-header');
       if (modal) {
         modal.style.display = 'block';
         document.body.style.overflow = 'hidden';
+
+        // Hide header when modal opens
+        if (header) {
+          header.style.display = 'none';
+        }
 
         // Start auto-play for modals with carousels
         if (modal.querySelector('.carousel-container')) {
@@ -486,9 +492,15 @@
 
     function closeModal(modalId) {
       const modal = document.getElementById(modalId);
+      const header = document.getElementById('site-header');
       if (modal) {
         modal.style.display = 'none';
         document.body.style.overflow = 'auto';
+
+        // Show header when modal closes
+        if (header) {
+          header.style.display = 'flex';
+        }
 
         // Stop auto-play when closing
         stopAutoPlay(modalId);
