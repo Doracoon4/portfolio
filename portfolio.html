@@ -19,7 +19,7 @@
 
 <!-- HEADER -->
 <header id="site-header" class="site-header">
-    <div class="logo"><a href="index.html"><img src="head.svg" alt="Home" class="logo-icon"></a></div>
+    <div class="logo"><a href="index.html"><div class="logo-icon-container"><img src="header panda/Asset 13.svg" alt="Home" class="logo-icon logo-icon-base"><img src="header panda/Asset 13.svg" alt="Home" class="logo-icon logo-icon-hover"></div></a></div>
     <nav class="site-nav" aria-label="Main Navigation">
         <a href="about.html">About</a>
         <a href="portfolio.html" class="active">Portfolio</a>
@@ -29,8 +29,6 @@
 
 <section class="portfolio-section">
     <div class="container">
-        <h1 class="portfolio-main-title"><span class="title-regular">My</span> <span class="title-accent">Work</span></h1>
-
         <!-- FEATURED WORK -->
         <h2 class="section-title">Case Studies</h2>
         <div class="featured-grid">
@@ -78,39 +76,15 @@
         <!-- OTHER PROJECTS -->
         <h2 class="section-title">From the Archives</h2>
         <div class="other-projects-grid">
-            <div class="project-card" onclick="openModal('modal-1')">
-                <img src="wtt.jpg" alt="Waste to Treasure brand identity" class="fill-image">
+            <div class="project-card" onclick="openModal('modal-6')">
+                <img src="motivumalkoto.png" alt="MotifCreator Application">
                 <div class="project-info">
-                    <h3>Waste to Treasure brand identity</h3>
-                    <p>Brand identity design an industrial innovation that transforms plastic waste into reusable materials, energy, and fuels. The visual identity reflects the project's focus on sustainability, circularity, and technological progress.</p>
+                    <h3>MotifCreator Application</h3>
+                    <p>Award-winning design tool turning ethnographic archives into interactive, customizable art experiences.</p>
                     <div class="project-tags">
-                        <span class="tag">Brand Identity</span>
-                        <span class="tag">Graphic Design</span>
-                        <span class="tag">Sustainability</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" onclick="openModal('modal-2')">
-                <img src="heron zoom botle.jpg" alt="Wine Label Design" class="fill-image">
-                <div class="project-info">
-                    <h3>Wine Label Design</h3>
-                    <p>Elegant packaging design for premium wine collection</p>
-                    <div class="project-tags">
-                        <span class="tag">Packaging</span>
-                        <span class="tag">Print Design</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" onclick="openModal('modal-3')">
-                <img src="primape.png" alt="Beer Label Design" class="fill-image">
-                <div class="project-info">
-                    <h3>Craft Beer Labels</h3>
-                    <p>Playful label designs for local brewery</p>
-                    <div class="project-tags">
-                        <span class="tag">Packaging</span>
-                        <span class="tag">Illustration</span>
+                        <span class="tag">UX/UI Design</span>
+                        <span class="tag">Interactive Exhibit</span>
+                        <span class="tag">Vectorization</span>
                     </div>
                 </div>
             </div>
@@ -128,28 +102,15 @@
                 </div>
             </div>
 
-            <div class="project-card" onclick="openModal('modal-5')">
-                <img src="illustration_ex.jpg" alt="Aphasia Exercise Book Illustrations" class="fill-image">
+            <div class="project-card" onclick="openModal('modal-1')">
+                <img src="Waste to Treasure Corporate Identity/1.jpg" alt="Waste to Treasure brand identity" class="fill-image">
                 <div class="project-info">
-                    <h3>Aphasia Exercise Book Illustrations</h3>
-                    <p>Specialized digital illustrations created for rehabilitation materials supporting patients with aphasia. The visuals were designed to aid comprehension and engagement by addressing specific communication challenges.</p>
+                    <h3>Waste to Treasure brand identity</h3>
+                    <p>Brand identity design an industrial innovation that transforms plastic waste into reusable materials, energy, and fuels. The visual identity reflects the project's focus on sustainability, circularity, and technological progress.</p>
                     <div class="project-tags">
-                        <span class="tag">Illustration</span>
-                        <span class="tag">Accessibility</span>
-                        <span class="tag">Health Design</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" onclick="openModal('modal-6')">
-                <img src="motivumalkoto.png" alt="MotifCreator Application">
-                <div class="project-info">
-                    <h3>MotifCreator Application</h3>
-                    <p>Award-winning design tool turning ethnographic archives into interactive, customizable art experiences.</p>
-                    <div class="project-tags">
-                        <span class="tag">UX/UI Design</span>
-                        <span class="tag">Interactive Exhibit</span>
-                        <span class="tag">Vectorization</span>
+                        <span class="tag">Brand Identity</span>
+                        <span class="tag">Graphic Design</span>
+                        <span class="tag">Sustainability</span>
                     </div>
                 </div>
             </div>
@@ -167,6 +128,31 @@
                 </div>
             </div>
 
+            <div class="project-card" onclick="openModal('modal-5')">
+                <img src="illustration_ex.jpg" alt="Aphasia Exercise Book Illustrations" class="fill-image">
+                <div class="project-info">
+                    <h3>Aphasia Exercise Book Illustrations</h3>
+                    <p>Specialized digital illustrations created for rehabilitation materials supporting patients with aphasia. The visuals were designed to aid comprehension and engagement by addressing specific communication challenges.</p>
+                    <div class="project-tags">
+                        <span class="tag">Illustration</span>
+                        <span class="tag">Accessibility</span>
+                        <span class="tag">Health Design</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" onclick="openModal('modal-2')">
+                <img src="heron zoom botle.jpg" alt="Wine Label Design" class="fill-image">
+                <div class="project-info">
+                    <h3>Wine Label Design</h3>
+                    <p>Elegant packaging design for premium wine collection</p>
+                    <div class="project-tags">
+                        <span class="tag">Packaging</span>
+                        <span class="tag">Print Design</span>
+                    </div>
+                </div>
+            </div>
+
             <div class="project-card" onclick="openModal('modal-8')">
                 <img src="posters/1.jpg" alt="Poster Design" class="fill-image">
                 <div class="project-info">
@@ -176,6 +162,18 @@
                         <span class="tag">Poster Design</span>
                         <span class="tag">Graphic Design</span>
                         <span class="tag">Typography</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" onclick="openModal('modal-3')">
+                <img src="primape.png" alt="Beer Label Design" class="fill-image">
+                <div class="project-info">
+                    <h3>Craft Beer Labels</h3>
+                    <p>Playful label designs for local brewery</p>
+                    <div class="project-tags">
+                        <span class="tag">Packaging</span>
+                        <span class="tag">Illustration</span>
                     </div>
                 </div>
             </div>
@@ -347,9 +345,37 @@
         <div id="modal-6" class="project-modal" onclick="closeModal('modal-6')">
             <div class="modal-content" onclick="event.stopPropagation()">
                 <span class="modal-close" onclick="closeModal('modal-6')">&times;</span>
-                <img src="motivumalkoto.png" alt="MotifCreator Application">
+
+                <!-- Carousel -->
+                <div class="carousel-container">
+                    <div class="carousel-slide active">
+                        <img src="motivumalkoto/1.png" alt="MotifCreator Application Screen 1">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="motivumalkoto/2.png" alt="MotifCreator Application Screen 2">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="motivumalkoto/3.png" alt="MotifCreator Application Screen 3">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="motivumalkoto/4.png" alt="MotifCreator Application Screen 4">
+                    </div>
+
+                    <!-- Navigation buttons -->
+                    <button class="carousel-prev" onclick="changeSlide('modal-6', -1); event.stopPropagation();">&#10094;</button>
+                    <button class="carousel-next" onclick="changeSlide('modal-6', 1); event.stopPropagation();">&#10095;</button>
+
+                    <!-- Slide indicators -->
+                    <div class="carousel-indicators">
+                        <span class="indicator active" onclick="goToSlide('modal-6', 0); event.stopPropagation();"></span>
+                        <span class="indicator" onclick="goToSlide('modal-6', 1); event.stopPropagation();"></span>
+                        <span class="indicator" onclick="goToSlide('modal-6', 2); event.stopPropagation();"></span>
+                        <span class="indicator" onclick="goToSlide('modal-6', 3); event.stopPropagation();"></span>
+                    </div>
+                </div>
+
                 <h2>MotifCreator Application</h2>
-                <p>Award-winning design tool turning ethnographic archives into interactive, customizable art experiences. Users can explore traditional patterns, customize designs, and create unique artworks inspired by cultural heritage.</p>
+                <p>Award-winning design tool turning ethnographic archives into interactive, customizable art experiences. Users can explore traditional patterns, customize designs, and create unique artworks inspired by cultural heritage. <a href="https://motivumalkoto.neprajz.hu/" target="_blank" rel="noopener" style="color: #f27fa6; font-weight: 600; text-decoration: underline;">Try it here</a></p>
                 <div class="modal-tags">
                     <span class="tag">UX/UI Design</span>
                     <span class="tag">Interactive Exhibit</span>
@@ -525,5 +551,6 @@
     }
 </script>
 
+<script src="panda-switcher.js"></script>
 </body>
 </html>
