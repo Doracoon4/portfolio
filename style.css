@@ -1978,17 +1978,97 @@ footer {
     }
 }
 
+.profile-photo-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
 .profile-photo {
     width: 100%;
     border-radius: 20px;
-    margin-bottom: 30px;
     box-shadow: 0 10px 40px rgba(242, 127, 166, 0.2);
     transition: all 0.5s ease;
+    display: block;
 }
 
-.profile-photo:hover {
+.profile-color-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    background: rgba(42, 184, 184, 0.5);
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.profile-photo-container:hover .profile-photo {
     transform: scale(1.05);
     box-shadow: 0 15px 50px rgba(242, 127, 166, 0.35);
+}
+
+.profile-photo-container:hover .profile-color-overlay {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.profile-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.5s ease;
+    z-index: 2;
+    object-fit: fill;
+    object-position: center;
+}
+
+.profile-overlay-dori {
+    transition: opacity 0.6s ease, transform 0.5s ease;
+}
+
+.profile-overlay-light {
+    clip-path: inset(0 100% 0 0);
+    transition: transform 0.5s ease;
+    animation: none;
+    opacity: 0.3;
+}
+
+.profile-photo-container:hover .profile-overlay {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.profile-photo-container:hover .profile-overlay-dori {
+    opacity: 1;
+}
+
+.profile-photo-container:hover .profile-overlay-light {
+    animation: light-sweep 0.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes light-sweep {
+    0% {
+        clip-path: inset(0 100% 0 0);
+    }
+    40% {
+        clip-path: inset(0 0 0 0);
+    }
+    45% {
+        clip-path: inset(0 0 0 0);
+    }
+    100% {
+        clip-path: inset(0 0 0 100%);
+    }
 }
 
 .about-left h3 {
@@ -2408,6 +2488,20 @@ footer {
         color: #ffffff;
         font-weight: 700;
         font-size: 0.9rem;
+        border: none;
+    }
+
+    /* Override tool pill colors on mobile */
+    .skill-pill.tool-pill {
+        color: #ffffff;
+        border: none;
+    }
+
+    .skill-pill.tool-pill:hover {
+        background: transparent;
+        color: #ffffff;
+        transform: none;
+        box-shadow: none;
     }
 
     .skill-pill::after, .language-pill::after {

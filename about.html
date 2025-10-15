@@ -4,10 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About | Dóri Szabó</title>
+    <meta name="description" content="Senior Product Designer creating playful, accessible, and scalable digital experiences. Focused on large-scale platforms, improving legacy UX, and designing for accessibility.">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yoursite.com/about.html">
+    <meta property="og:title" content="About | Dóri Szabó — Product Designer">
+    <meta property="og:description" content="Senior Product Designer creating playful, accessible, and scalable digital experiences.">
+    <meta property="og:image" content="https://yoursite.com/opengraph/og.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yoursite.com/about.html">
+    <meta property="twitter:title" content="About | Dóri Szabó — Product Designer">
+    <meta property="twitter:description" content="Senior Product Designer creating playful, accessible, and scalable digital experiences.">
+    <meta property="twitter:image" content="https://yoursite.com/opengraph/og.png">
+
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="alternate icon" href="favicon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Indie+Flower&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=202510101413">
+    <link rel="stylesheet" href="style.css?v=202510141805">
 </head>
 <body>
 
@@ -35,7 +51,12 @@
 
             <!-- LEFT COLUMN -->
             <div class="about-left">
-                <img src="lightmeup.png" alt="Dóri Szabó" class="profile-photo">
+                <div class="profile-photo-container">
+                    <img src="lightmeup.png" alt="Dóri Szabó" class="profile-photo">
+                    <div class="profile-color-overlay"></div>
+                    <img src="about/dori.svg" alt="" class="profile-overlay profile-overlay-dori" aria-hidden="true">
+                    <img src="about/light.svg" alt="" class="profile-overlay profile-overlay-light" aria-hidden="true">
+                </div>
                 
                 <!-- Tools -->
                 <h3>Tools</h3>
@@ -242,6 +263,7 @@ function collapsePills(originalPill, expandedPills) {
 }
 </script>
 
-<script src="panda-switcher.js?v=202510101413"></script>
+<script src="panda-switcher.js?v=202510141805"></script>
+<script src="loader.js"></script>
 </body>
 </html>
