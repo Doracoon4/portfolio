@@ -20,13 +20,21 @@
   <meta property="twitter:description" content="Senior Product Designer creating playful, accessible, and scalable digital experiences.">
   <meta property="twitter:image" content="https://yoursite.com/opengraph/og.png">
 
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="alternate icon" href="favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="alternate icon" href="assets/icons/favicon.svg">
+
+  <!-- Theme Script - Must run before page renders to prevent flash -->
+  <script>
+    (function() {
+      const theme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Indie+Flower&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=202510141805">
+  <link rel="stylesheet" href="style.css?v=202510182040">
   <style>
         * {
             margin: 0;
@@ -36,7 +44,6 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            color: #333;
             overflow-x: hidden;
         }
 
@@ -76,7 +83,6 @@
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(10px);
             padding: 2rem;
             border-radius: 15px;
@@ -90,13 +96,42 @@
 <div class="content"></div>
   <!-- HEADER -->
   <header id="site-header" class="site-header">
-    <div class="logo"><a href="index.html"><div class="logo-icon-container"><img src="header panda/Asset 13.svg" alt="Home" class="logo-icon logo-icon-base"><img src="header panda/Asset 13.svg" alt="Home" class="logo-icon logo-icon-hover"></div></a></div>
+    <div class="logo"><a href="index.html"><div class="logo-icon-container"><img src="assets/icons/header panda/Asset 13.svg" alt="" class="logo-icon logo-icon-base"><img src="assets/icons/header panda/Asset 9.svg" alt="" class="logo-icon logo-icon-hover"></div></a></div>
     <nav class="site-nav" aria-label="Main Navigation">
       <a href="about.html">About</a>
       <a href="portfolio.html">Portfolio</a>
       <a href="contact.html">Contact</a>
     </nav>
+    <button class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="sun-icon">☀️</span>
+      <span class="moon-icon">🌙</span>
+    </button>
   </header>
+  <script>
+    // Set initial logo sources immediately based on theme to prevent flash
+    (function() {
+      const theme = document.documentElement.getAttribute('data-theme');
+      const isDark = theme === 'dark';
+      const baseImg = document.querySelector('.logo-icon-base');
+      const hoverImg = document.querySelector('.logo-icon-hover');
+
+      if (baseImg) {
+        baseImg.src = isDark ? 'assets/icons/header rabbit/rabbit 1.svg' : 'assets/icons/header panda/Asset 13.svg';
+      baseImg.classList.add('ready');
+      }
+      if (hoverImg) {
+        const pandas = [
+          'assets/icons/header panda/Asset 1.svg', 'assets/icons/header panda/Asset 2.svg', 'assets/icons/header panda/Asset 3.svg',
+          'assets/icons/header panda/Asset 4.svg', 'assets/icons/header panda/Asset 5.svg', 'assets/icons/header panda/Asset 6.svg',
+          'assets/icons/header panda/Asset 7.svg', 'assets/icons/header panda/Asset 8.svg', 'assets/icons/header panda/Asset 9.svg',
+          'assets/icons/header panda/Asset 10.svg', 'assets/icons/header panda/Asset 11.svg', 'assets/icons/header panda/Asset 12.svg',
+          'assets/icons/header panda/Asset 14.svg'
+        ];
+        hoverImg.src = isDark ? 'assets/icons/header rabbit/rabbit 2.svg' : pandas[Math.floor(Math.random() * pandas.length)];
+      hoverImg.classList.add('ready');
+      }
+    })();
+  </script>
 
   <!-- HERO -->
   <section class="hero">
@@ -121,7 +156,7 @@
       <div class="portfolio-grid">
         <a class="portfolio-card" href="instructure.html" aria-label="Open Instructure project page">
           <div class="card-image">
-            <img src="instructure logo.svg" alt="Instructure project">
+            <img src="assets/images/instructure logo.svg" alt="Instructure project">
           </div>
           <div class="card-content">
             <div class="card-header">
@@ -140,7 +175,7 @@
 
         <a class="portfolio-card" href="peek-cloppenburg.html" aria-label="Open Peek & Cloppenburg project page">
           <div class="card-image">
-            <img src="Peek.svg" alt="Peek & Cloppenburg project">
+            <img src="assets/images/Peek.svg" alt="Peek & Cloppenburg project">
           </div>
           <div class="card-content">
             <div class="card-header">
@@ -159,7 +194,7 @@
 
         <a class="portfolio-card" href="farm42.html" aria-label="Open FARM42 project page">
           <div class="card-image">
-            <img src="farm42_.jpg" alt="FARM42 project">
+            <img src="assets/images/farm42_.jpg" alt="FARM42 project">
           </div>
           <div class="card-content">
             <div class="card-header">
@@ -178,7 +213,7 @@
 
         <a class="portfolio-card" href="museum.html" aria-label="Open Museum of Ethnography project page">
           <div class="card-image">
-            <img src="neprajzi.svg" alt="Museum project">
+            <img src="assets/images/neprajzi.svg" alt="Museum project">
           </div>
           <div class="card-content">
             <div class="card-header">
@@ -197,7 +232,7 @@
 
         <a class="portfolio-card" href="onair.html" aria-label="Open OnAir project page">
           <div class="card-image">
-            <img src="onair.svg" alt="OnAir project">
+            <img src="assets/images/onair.svg" alt="OnAir project">
           </div>
           <div class="card-content">
             <div class="card-header">
@@ -233,7 +268,7 @@
             </div>
         </div>
         <div class="footer-center">
-            <img src="footer/pinkpanda.svg" alt="" class="footer-panda" aria-hidden="true">
+            <img src="assets/icons/footer/pinkpanda.svg" alt="" class="footer-panda" aria-hidden="true">
         </div>
         <div class="footer-right">
             <div class="footer-copy">© 2025 Dóri Szabó</div>
@@ -344,8 +379,9 @@
         }
 
         function animate() {
-            // Clear with base light color
-            ctx.fillStyle = '#f5f5f0';
+            // Clear with base color (theme-aware)
+            const theme = document.documentElement.getAttribute('data-theme');
+            ctx.fillStyle = theme === 'dark' ? '#0a0a0a' : '#f5f5f0';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             // Update metaballs
@@ -369,8 +405,9 @@
                         sum += (ball.radius * ball.radius) / (dist * dist + 1);
                     });
 
-                    // If sum is high enough, make it pink
+                    // If sum is high enough, make it pink (darker in dark mode)
                     if (sum > 0.8) {
+                        const isDark = theme === 'dark';
                         for (let sy = 0; sy < step; sy++) {
                             for (let sx = 0; sx < step; sx++) {
                                 const px = x + sx;
@@ -378,10 +415,11 @@
                                 if (px < canvas.width && py < canvas.height) {
                                     const i = (py * canvas.width + px) * 4;
                                     const strength = Math.min(1, (sum - 0.8) * 3);
-                                    data[i] = 255;     // R
-                                    data[i + 1] = 200; // G
-                                    data[i + 2] = 225; // B
-                                    data[i + 3] = strength * 255; // A
+                                    // Darker pink in dark mode for better contrast
+                                    data[i] = isDark ? 180 : 255;     // R
+                                    data[i + 1] = isDark ? 80 : 200;  // G
+                                    data[i + 2] = isDark ? 130 : 225; // B
+                                    data[i + 3] = strength * 255;     // A
                                 }
                             }
                         }
@@ -404,7 +442,8 @@
 
         animate();
     </script>
-<script src="panda-switcher.js?v=202510141805"></script>
+<script src="theme-toggle.js"></script>
+<script src="panda-switcher.js?v=202510182040"></script>
 <script src="loader.js"></script>
 </body>
 </html>

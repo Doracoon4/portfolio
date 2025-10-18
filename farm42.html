@@ -4,10 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FARM42 - D�ri Szab�</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="alternate icon" href="favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <link rel="alternate icon" href="assets/icons/favicon.svg">
+
+  <!-- Theme Script - Must run before page renders to prevent flash -->
+  <script>
+    (function() {
+      const theme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Indie+Flower&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=202510141805">
+    <link rel="stylesheet" href="style.css?v=202510182040">
 </head>
 <body>
 
@@ -21,13 +29,42 @@
 
 <!-- HEADER -->
 <header id="site-header" class="site-header">
-    <div class="logo"><a href="index.html"><div class="logo-icon-container"><img src="header panda/Asset 13.svg" alt="Home" class="logo-icon logo-icon-base"><img src="header panda/Asset 13.svg" alt="Home" class="logo-icon logo-icon-hover"></div></a></div>
+    <div class="logo"><a href="index.html"><div class="logo-icon-container"><img src="assets/icons/header panda/Asset 13.svg" alt="" class="logo-icon logo-icon-base"><img src="assets/icons/header panda/Asset 9.svg" alt="" class="logo-icon logo-icon-hover"></div></a></div>
     <nav class="site-nav" aria-label="Main Navigation">
         <a href="about.html">About</a>
         <a href="portfolio.html">Portfolio</a>
         <a href="contact.html">Contact</a>
     </nav>
+    <button class="theme-toggle" aria-label="Toggle dark mode">
+        <span class="sun-icon">☀️</span>
+        <span class="moon-icon">🌙</span>
+    </button>
 </header>
+<script>
+  // Set initial logo sources immediately based on theme to prevent flash
+  (function() {
+    const theme = document.documentElement.getAttribute('data-theme');
+    const isDark = theme === 'dark';
+    const baseImg = document.querySelector('.logo-icon-base');
+    const hoverImg = document.querySelector('.logo-icon-hover');
+
+    if (baseImg) {
+      baseImg.src = isDark ? 'assets/icons/header rabbit/rabbit 1.svg' : 'assets/icons/header panda/Asset 13.svg';
+      baseImg.classList.add('ready');
+    }
+    if (hoverImg) {
+      const pandas = [
+        'assets/icons/header panda/Asset 1.svg', 'assets/icons/header panda/Asset 2.svg', 'assets/icons/header panda/Asset 3.svg',
+        'assets/icons/header panda/Asset 4.svg', 'assets/icons/header panda/Asset 5.svg', 'assets/icons/header panda/Asset 6.svg',
+        'assets/icons/header panda/Asset 7.svg', 'assets/icons/header panda/Asset 8.svg', 'assets/icons/header panda/Asset 9.svg',
+        'assets/icons/header panda/Asset 10.svg', 'assets/icons/header panda/Asset 11.svg', 'assets/icons/header panda/Asset 12.svg',
+        'assets/icons/header panda/Asset 14.svg'
+      ];
+      hoverImg.src = isDark ? 'assets/icons/header rabbit/rabbit 2.svg' : pandas[Math.floor(Math.random() * pandas.length)];
+      hoverImg.classList.add('ready');
+    }
+  })();
+</script>
 
 <!-- PROJECT DETAIL -->
 <main class="project-detail">
@@ -45,7 +82,7 @@
 
         <!-- Hero Image -->
         <div class="project-hero-image">
-            <img src="farm42 3 screen.png" alt="FARM42 Precision Farming Platform">
+            <img src="assets/images/farm42 3 screen.png" alt="FARM42 Precision Farming Platform">
         </div>
 
         <!-- Project Overview -->
@@ -151,12 +188,12 @@
         <section class="project-section">
             <h2>Interface Design</h2>
             <div class="project-images farm42-images">
-                <img src="Farm42 png/desktop1.png" alt="FARM42 desktop interface">
-                <img src="Farm42 png/desktop2.png" alt="FARM42 desktop dashboard">
-                <img src="Farm42 png/tablet1.png" alt="FARM42 tablet view">
-                <img src="Farm42 png/tablet2.png" alt="FARM42 tablet interface">
-                <img src="Farm42 png/tablet3.png" alt="FARM42 tablet controls">
-                <img src="farm42 ui components.png" alt="FARM42 UI components" class="farm42-components-with-shadow">
+                <img src="assets/images/Farm42 png/desktop1.png" alt="FARM42 desktop interface">
+                <img src="assets/images/Farm42 png/desktop2.png" alt="FARM42 desktop dashboard">
+                <img src="assets/images/Farm42 png/tablet1.png" alt="FARM42 tablet view">
+                <img src="assets/images/Farm42 png/tablet2.png" alt="FARM42 tablet interface">
+                <img src="assets/images/Farm42 png/tablet3.png" alt="FARM42 tablet controls">
+                <img src="assets/images/farm42 ui components.png" alt="FARM42 UI components" class="farm42-components-with-shadow">
             </div>
         </section>
 
@@ -199,7 +236,7 @@
             </div>
         </div>
         <div class="footer-center">
-            <img src="footer/pinkpanda.svg" alt="" class="footer-panda" aria-hidden="true">
+            <img src="assets/icons/footer/pinkpanda.svg" alt="" class="footer-panda" aria-hidden="true">
         </div>
         <div class="footer-right">
             <div class="footer-copy">© 2025 Dóri Szabó</div>
@@ -222,9 +259,10 @@
 </script>
 
 <!-- Image Lightbox -->
-<script src="lightbox.js?v=202510141805"></script>
+<script src="lightbox.js?v=202510182040"></script>
 
-<script src="panda-switcher.js?v=202510141805"></script>
+<script src="theme-toggle.js"></script>
+<script src="panda-switcher.js?v=202510182040"></script>
 <script src="loader.js"></script>
 </body>
 </html>

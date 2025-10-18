@@ -4,7 +4,7 @@
   let loaderTimeout = null;
   let winkInterval = null;
 
-  // Create loader HTML
+  // Create loader HTML - background color will be set based on theme
   const loaderHTML = `
     <div id="site-loader" style="
       position: fixed;
@@ -12,7 +12,6 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: #f5f5f0;
       display: none;
       align-items: center;
       justify-content: center;
@@ -21,7 +20,7 @@
       transition: opacity 0.3s ease;
     ">
       <div style="text-align: center;">
-        <img id="loader-panda" src="header panda/Asset 9.svg" alt="Loading..." style="
+        <img id="loader-icon" src="header panda/Asset 9.svg" alt="Loading..." style="
           width: 120px;
           height: 120px;
           animation: gentle-bounce 1s ease-in-out infinite;
@@ -44,6 +43,11 @@
     if (!loader) return;
 
     loaderShown = true;
+
+    // Set background color based on current theme
+    const theme = document.documentElement.getAttribute('data-theme');
+    loader.style.background = theme === 'dark' ? '#0a0a0a' : '#f5f5f0';
+
     loader.style.display = 'flex';
 
     // Fade in after a brief moment
@@ -51,31 +55,38 @@
       loader.style.opacity = '1';
     }, 10);
 
-    const pandaImg = document.getElementById('loader-panda');
-    let isWinking = false;
-    let winkCount = 0; // Track wink cycles
+    const loaderIcon = document.getElementById('loader-icon');
+    let isAnimating = false;
+    let animationCount = 0; // Track animation cycles
 
-    // Start with Asset 9 (normal state)
-    pandaImg.src = 'header panda/Asset 9.svg';
+    // Determine which icons to use based on theme
+    const isDark = theme === 'dark';
+    const icon1 = isDark ? 'assets/icons/header rabbit/rabbit 1.svg' : 'assets/icons/header panda/Asset 9.svg';
+    const icon2 = isDark ? 'assets/icons/header rabbit/rabbit 2.svg' : 'assets/icons/header panda/Asset 8.svg';
 
-    // Winking animation - alternate between Asset 9 and Asset 8
+    // Start with icon1 (normal state)
+    loaderIcon.src = icon1;
+
+    // Animation - alternate between icon1 and icon2
+    // Light mode: panda wink (Asset 9 <-> Asset 8)
+    // Dark mode: rabbit face change (rabbit 1 <-> rabbit 2)
     winkInterval = setInterval(function() {
-      if (isWinking) {
-        pandaImg.src = 'header panda/Asset 9.svg';
-        winkCount++; // Completed one full cycle when returning to Asset 9
+      if (isAnimating) {
+        loaderIcon.src = icon1;
+        animationCount++; // Completed one full cycle when returning to icon1
       } else {
-        pandaImg.src = 'header panda/Asset 8.svg';
+        loaderIcon.src = icon2;
       }
-      isWinking = !isWinking;
-    }, 400); // Wink every 400ms
+      isAnimating = !isAnimating;
+    }, 400); // Animate every 400ms
 
-    // Store wink count globally so hideLoader can check it
+    // Store animation count globally so hideLoader can check it
     window.loaderWinkCount = 0;
     const winkCountInterval = setInterval(function() {
-      window.loaderWinkCount = winkCount;
+      window.loaderWinkCount = animationCount;
     }, 100);
 
-    // Clear the wink count interval when hiding
+    // Clear the animation count interval when hiding
     window.loaderWinkCountInterval = winkCountInterval;
   }
 
@@ -86,18 +97,23 @@
     const loader = document.getElementById('site-loader');
     if (!loader) return;
 
-    // If not immediate, ensure we complete at least one full wink cycle
+    // If not immediate, ensure we complete at least one full animation cycle
     if (!immediate && winkInterval) {
-      const pandaImg = document.getElementById('loader-panda');
-      const currentSrc = pandaImg ? pandaImg.src : '';
+      const loaderIcon = document.getElementById('loader-icon');
+      const currentSrc = loaderIcon ? loaderIcon.src : '';
 
-      // If we haven't completed at least one full wink yet, wait
+      // Determine which is the "normal" state based on theme
+      const theme = document.documentElement.getAttribute('data-theme');
+      const isDark = theme === 'dark';
+      const normalIcon = isDark ? 'rabbit 1.svg' : 'Asset 9.svg';
+
+      // If we haven't completed at least one animation cycle yet, wait
       const checkInterval = setInterval(function() {
-        const winkCount = window.loaderWinkCount || 0;
-        const isOnAsset9 = currentSrc.includes('Asset 9') || pandaImg.src.includes('Asset 9');
+        const animationCount = window.loaderWinkCount || 0;
+        const isOnNormalIcon = currentSrc.includes(normalIcon) || loaderIcon.src.includes(normalIcon);
 
-        // Wait until we've completed at least one wink cycle AND we're on Asset 9
-        if (winkCount >= 1 && isOnAsset9) {
+        // Wait until we've completed at least one animation cycle AND we're on the normal icon
+        if (animationCount >= 1 && isOnNormalIcon) {
           clearInterval(checkInterval);
           finishHiding();
         }
@@ -142,9 +158,9 @@
     // Insert loader at the beginning of body
     document.body.insertAdjacentHTML('afterbegin', loaderHTML);
 
-    // Get all images on the page (excluding header logo and loader panda)
+    // Get all images on the page (excluding header logo and loader icon)
     const images = Array.from(document.querySelectorAll('img')).filter(function(img) {
-      return !img.id || (img.id !== 'loader-panda' && !img.closest('.site-header'));
+      return !img.id || (img.id !== 'loader-icon' && !img.closest('.site-header'));
     });
 
     // Only proceed if there are images to load
