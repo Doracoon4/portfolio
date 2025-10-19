@@ -6,6 +6,14 @@
     <title>404 - Page Not Found | Dóri Szabó</title>
     <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
     <link rel="alternate icon" href="assets/icons/favicon.svg">
+
+  <!-- Theme Script - Must run before page renders to prevent flash -->
+  <script>
+    (function() {
+      const theme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Indie+Flower&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=202510182040">
 </head>
@@ -27,6 +35,10 @@
         <a href="portfolio.html">Portfolio</a>
         <a href="contact.html">Contact</a>
     </nav>
+    <button class="theme-toggle" aria-label="Toggle dark mode">
+        <span class="sun-icon">☀️</span>
+        <span class="moon-icon">🌙</span>
+    </button>
 </header>
 <script>
   // Set initial logo sources immediately based on theme to prevent flash
@@ -60,7 +72,7 @@
         <h1 class="error-title">Oh no, you've wandered off the map!</h1>
         <p class="error-message">It's dangerous to go alone — take this!</p>
         <div class="error-image">
-            <img src="assets/images/here you grog.png" alt="Here you go, Grog!">
+            <img src="assets/images/404/here you grog.png" alt="Here you go, Grog!">
         </div>
         <a href="index.html" class="error-button">Back to Home</a>
     </div>
@@ -104,6 +116,8 @@
     })();
 </script>
 
+<script src="theme-toggle.js"></script>
 <script src="panda-switcher.js?v=202510182040"></script>
+<script src="loader.js"></script>
 </body>
 </html>
